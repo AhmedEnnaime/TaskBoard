@@ -21,7 +21,7 @@ class Database
   public function __construct()
   {
     // Set DSN
-    $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
+    $dsn = 'pgsql:host= ' . $this->host . ' ;port= ' . $this->port . '; dbname= ' . $this->dbname . '; user= ' . $this->user . '; password= ' . $this->pass . '';
     $options = array(
       PDO::ATTR_PERSISTENT => true,
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION

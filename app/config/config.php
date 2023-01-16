@@ -4,9 +4,9 @@ define('DB_HOST', 'localhost');
 
 define('DB_USER', 'postgres');
 
-define('DB_PASS', '');
+define('DB_PASS', '3ea14367A4');
 
-define('DB_NAME', '_YOUR_DBNAME_');
+define('DB_NAME', 'TaskBoard');
 
 define('APPROOT', dirname(dirname(__FILE__)));
 
