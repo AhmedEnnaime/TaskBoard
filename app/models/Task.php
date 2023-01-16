@@ -1,0 +1,55 @@
+<?php
+
+class Task extends Model
+{
+
+    protected $table = "tasks";
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function add($data)
+    {
+
+        try {
+            $query = "INSERT INTO " . $this->table . " (title,members_num,deadline,workspace_id,section) VALUES (:title,:members_num,:deadline,:workspace_id,:section)";
+            $this->db->query($query);
+
+            // bind values
+            $this->db->bind(":title", $data["title"]);
+            $this->db->bind(":members_num", $data["members_num"]);
+            $this->db->bind(":deadline", $data["deadline"]);
+            $this->db->bind(":workspace_id", $data["workspace_id"]);
+            $this->db->bind(":section", $data["section"]);
+
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    public function getTasks()
+    {
+        return $this->getTable();
+    }
+
+    public function getTaskById($id)
+    {
+        return $this->getElementById($id);
+    }
+
+    public function deleteTask($id)
+    {
+        return $this->delete($id);
+    }
+
+    public function updateWorkspace($id)
+    {
+    }
+}

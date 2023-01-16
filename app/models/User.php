@@ -1,17 +1,9 @@
 <?php
-require_once "../app/generate_jwt.php";
 
 class User extends Model
 {
 
     protected $table = "users";
-
-    public $id;
-    public $name;
-    public $birthday;
-    public $email;
-    public $password;
-    public $img;
 
     public function __construct()
     {
@@ -42,13 +34,6 @@ class User extends Model
             $query = "INSERT INTO " . $this->table . " (name,birthday,email,password,img) VALUES (:name,:birthday,:email,:password,:img)";
             $this->db->query($query);
 
-            // sanitize
-            $this->name = htmlspecialchars(strip_tags($data["name"]));
-            $this->birthday = htmlspecialchars(strip_tags($data["birthday"]));
-            $this->email = htmlspecialchars(strip_tags($data["email"]));
-            $this->password = htmlspecialchars(strip_tags($data["password"]));
-            $this->img = htmlspecialchars(strip_tags($data["img"]));
-
             // bind values
             $this->db->bind(":name", $data["name"]);
             $this->db->bind(":birthday", $data["birthday"]);
@@ -69,7 +54,7 @@ class User extends Model
     public function login($email, $password)
     {
         try {
-            $this->db->query("SELECT * FROM users WHERE email = :email");
+            $this->db->query("SELECT * FROM " . $this->table . " WHERE email = :email");
             $this->db->bind(':email', $email);
             $row = $this->db->single();
             $hashed_password = $row->password;
@@ -85,15 +70,6 @@ class User extends Model
 
     public function getLoggedUserInfo()
     {
-        $auth = JWTGenerate::validate();
-        try {
-            $query = "SELECT * FROM users WHERE id = :id";
-            $this->db->query($query);
-            $this->db->bind(":id", $auth);
-            $row = $this->db->single();
-            return $row;
-        } catch (PDOException $ex) {
-            echo $ex->getMessage();
-        }
+        return $this->LoggedInUser();
     }
 }

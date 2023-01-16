@@ -1,5 +1,7 @@
 <?php
 
+require_once "../app/generate_jwt.php";
+
 class Model
 {
     protected $db;
@@ -42,6 +44,20 @@ class Model
             } else {
                 return false;
             }
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    public function LoggedInUser()
+    {
+        $auth = JWTGenerate::validate();
+        try {
+            $query = "SELECT * FROM users WHERE id = :id";
+            $this->db->query($query);
+            $this->db->bind(":id", $auth);
+            $row = $this->db->single();
+            return $row;
         } catch (PDOException $ex) {
             echo $ex->getMessage();
         }
