@@ -4,8 +4,6 @@ require_once 'vendor/autoload.php';
 
 class Authenticate extends Controller
 {
-
-    private $userId;
     public $jwt;
     public $token;
     public $userModel;
@@ -21,9 +19,7 @@ class Authenticate extends Controller
 
     public function login()
     {
-        if (isLoggedIn()) {
-            redirect("pages");
-        }
+
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

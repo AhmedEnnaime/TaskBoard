@@ -20,7 +20,7 @@ class JWTGenerate
     {
         $this->secret_key  = '68V0zWFrS72GbpPreidkQFLfj4v9m3Ti+DXc8OB0gcM=';
         $this->date   = new DateTimeImmutable();
-        $this->expire_at     = $this->date->modify('+6 minutes')->getTimestamp();      // Add 60 seconds
+        $this->expire_at     = $this->date->modify('+60 minutes')->getTimestamp();      // Add 60 seconds
         $this->domainName = URLROOT;
     }
 

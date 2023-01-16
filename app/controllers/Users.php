@@ -68,7 +68,7 @@ class Users extends Controller
 
                 if ($this->userModel->add($data)) {
                     $file = $_FILES['img']['name'];
-                    $folder = './img/uploads/' . $file;
+                    $folder = './img/uploads/users/' . $file;
                     $fileTmp = $_FILES['img']['tmp_name'];
                     move_uploaded_file($fileTmp, $folder);
                     redirect("authenticate/login");
