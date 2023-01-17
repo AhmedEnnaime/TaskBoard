@@ -69,4 +69,18 @@ class Workspaces extends Controller
             $this->view('home');
         }
     }
+
+    public function delete($id)
+    {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if ($this->workspaceModel->deleteWorkspace($id)) {
+                redirect("pages");
+            } else {
+                die("Something went wrong");
+            }
+        } else {
+            redirect("pages");
+        }
+    }
 }
