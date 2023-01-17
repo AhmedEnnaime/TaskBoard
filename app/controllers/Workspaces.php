@@ -15,7 +15,6 @@ class Workspaces extends Controller
     public function add()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
             $user = $this->userModel->getLoggedUserInfo();
             $data = [
                 'title' => trim($_POST['title']),

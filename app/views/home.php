@@ -17,70 +17,40 @@
 
         </div>
 
-        <div class="flex flex-col gap-y-4 items-center bg-red-400 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-96 h-96 hidden drop-shadow-lg modal">
+        <div class="flex flex-col gap-y-4 items-center rounded-lg bg-red-400 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-96 h-96 h-fit hidden drop-shadow-lg modal">
 
             <h3 class="pt-8 text-2xl">Add workspace</h3>
 
 
             <i class="fa-solid fa-xmark right-2 absolute cursor-pointer fixed pt-2 pl-2"></i>
 
-            <form action="" class="flex flex-col gap-y-4">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <button type="submit">Add</button>
+            <form action="<?php echo URLROOT; ?>/workspaces/add" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4">
+
+                <label for="title">Title</label>
+                <input name="title" class="rounded-lg h-8 p-4" type="text" placeholder="Enter title">
+
+                <label for="description">Description</label>
+                <textarea placeholder="Enter description" class="rounded-lg p-4" name="description" id="" cols="20" rows="5"></textarea>
+
+                <label for="name">Image</label>
+                <input name="img" type="file">
+
+                <button class="p-4 mt-4 border-2 border-solid bg-blue-600" type="submit">Add</button>
             </form>
         </div>
 
 
-        <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            <?php  ?>
-            <a href="">
-                <div class="bg-red-200 h-24 rounded-xl cursor-pointer" style="background: url('<?php echo URLROOT; ?>/img/uploads/workspaces/0x0.jpg');">
-                    <h4 class="text-center pt-8">Pestana</h4>
-                </div>
-            </a>
-
-            <div class="bg-red-200 cursor-pointer h-24 rounded-xl">
-                <h4 class="text-center pt-8">Pestana</h4>
-            </div>
-            <div class="bg-red-200 h-24 rounded-xl">
-                <h4 class="text-center pt-8">Pestana</h4>
-            </div>
-            <div class="bg-red-200 h-24 rounded-xl">
-                <h4 class="text-center pt-8">Pestana</h4>
-            </div>
-            <div class="bg-red-200 h-24 rounded-xl">
-                <h4 class="text-center pt-8">Pestana</h4>
-            </div>
-            <div class="bg-red-200 h-24 rounded-xl">
-                <h4 class="text-center pt-8">Pestana</h4>
-            </div>
-            <div class="bg-red-200 h-24 rounded-xl">
-                <h4 class="text-center pt-8">Pestana</h4>
-            </div>
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            <?php foreach ($data['workspaces'] as $workspace) : ?>
+                <a href="<?php echo URLROOT; ?>/tasks/<?php echo $workspace->id; ?>">
+                    <div class="bg-red-200 h-28 rounded-xl cursor-pointer" style="background: url('<?php echo URLROOT; ?>/img/uploads/workspaces/<?php echo $workspace->img; ?>');">
+                        <h4 class="text-center pt-10 font-bold"><?php echo $workspace->title; ?></h4>
+                    </div>
+                </a>
+            <?php endforeach; ?>
         </div>
+
     </div>
-
-    <!-- <form action="<?php echo URLROOT; ?>/workspaces/add" method="POST" enctype="multipart/form-data">
-        title<input class="workspace_info" type="text" name="title">
-        description<textarea class="workspace_info" name="description" id="" cols="30" rows="10"></textarea>
-        img<input class="workspace_info" type="file" name="img">
-        <button id="send" type="submit">Add</button>
-    </form> -->
-
-    <!-- <div>
-        <?php foreach ($data['workspaces'] as $workspace) : ?>
-            <h3><?php echo $workspace->title; ?></h3>
-            <p><?php echo $workspace->description; ?></p>
-            <form action="<?php echo URLROOT; ?>/workspaces/delete/<?php echo $workspace->id; ?>" method="POST">
-                <button type="submit">delete</button>
-            </form>
-
-
-        <?php endforeach; ?>
-    </div> -->
 
     <?php require APPROOT . '/views/includes/footer.php'; ?>
 </body>

@@ -1,39 +1,45 @@
-const fill = document.querySelector('.fill');
-const empties = document.querySelectorAll('.empty');
+const list_items = document.querySelectorAll('.list-item');
+const lists = document.querySelectorAll('.list');
 
-fill.addEventListener('dragstart', dragStart);
-fill.addEventListener('dragend', dragEnd);
+let draggedItem = null;
 
-for (const empty of empties) {
-  empty.addEventListener('dragover', dragOver);
-  empty.addEventListener('dragenter', dragEnter);
-  empty.addEventListener('dragleave', dragLeave);
-  empty.addEventListener('drop', dragDrop);
-}
+for (let i = 0; i < list_items.length; i++) {
+	const item = list_items[i];
 
-function dragStart() {
-  this.className += ' hold';
-  setTimeout(() => (this.className = 'invisible'), 0);
-}
+	item.addEventListener('dragstart', function () {
+		draggedItem = item;
+		setTimeout(function () {
+			item.style.display = 'none';
+		}, 0)
+	});
 
-function dragEnd() {
-  this.className = 'fill';
-}
+	item.addEventListener('dragend', function () {
+		setTimeout(function () {
+			draggedItem.style.display = 'block';
+			draggedItem = null;
+		}, 0);
+	})
 
-function dragOver(e) {
-  e.preventDefault();
-}
+	for (let j = 0; j < lists.length; j ++) {
+		const list = lists[j];
 
-function dragEnter(e) {
-  e.preventDefault();
-  this.className += ' hovered';
-}
+		list.addEventListener('dragover', function (e) {
+			e.preventDefault();
+		});
+		
+		list.addEventListener('dragenter', function (e) {
+			e.preventDefault();
+			//this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+		});
 
-function dragLeave() {
-  this.className = 'empty';
-}
+		list.addEventListener('dragleave', function (e) {
+			//this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+		});
 
-function dragDrop() {
-  this.className = 'empty';
-  this.append(fill);
+		list.addEventListener('drop', function (e) {
+			console.log('drop');
+			this.append(draggedItem);
+			//this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+		});
+	}
 }

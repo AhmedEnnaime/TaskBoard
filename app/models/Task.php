@@ -33,12 +33,9 @@ class Task extends Model
                     $this->db->query("INSERT INTO members (name,task_id) VALUES(:name,:task_id)");
                     $this->db->bind(":name", $data["name"][$i]);
                     $this->db->bind(":task_id", $row->id);
-                    if ($this->db->execute()) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    $this->db->execute();
                 }
+                return true;
             } else {
                 return false;
             }
@@ -60,6 +57,54 @@ class Task extends Model
     public function deleteTask($id)
     {
         return $this->delete($id);
+    }
+
+    public function getTasksByWorkspace($id)
+    {
+        try {
+            $this->db->query("SELECT * FROM " . $this->table . " WHERE workspace_id = :workspace_id");
+            $this->db->bind(":workspace_id", $id);
+            $result = $this->db->resultSet();
+            return $result;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    public function getToDoTasks()
+    {
+        try {
+            $query = "SELECT * FROM " . $this->table . " WHERE section = 'ToDo'";
+            $this->db->query($query);
+            $result = $this->db->resultSet();
+            return $result;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    public function getDoingTasks()
+    {
+        try {
+            $query = "SELECT * FROM " . $this->table . " WHERE section = 'Doing'";
+            $this->db->query($query);
+            $result = $this->db->resultSet();
+            return $result;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    public function getDoneTasks()
+    {
+        try {
+            $query = "SELECT * FROM " . $this->table . " WHERE section = 'Done'";
+            $this->db->query($query);
+            $result = $this->db->resultSet();
+            return $result;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
     }
 
     public function updateWorkspace($id)
