@@ -149,7 +149,20 @@ class Task extends Model
         }
     }
 
-    public function updateWorkspace($id)
+    public function updateSection($id, $section)
     {
+        try {
+            $query = "UPDATE tasks SET section = :section WHERE id = :id";
+            $this->db->query($query);
+            $this->db->bind(":section", $section);
+            $this->db->bind(":id", $id);
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
     }
 }

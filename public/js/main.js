@@ -3,9 +3,10 @@ const lists = document.querySelectorAll('.list');
 
 let draggedItem = null;
 
-for (let i = 0; i < list_items.length; i++) {
-	const item = list_items[i];
-
+for (let item of list_items) {
+	let section_target = item.parentElement.id;
+	let item_id = item.dataset.id;
+	console.log(section_target);
 	item.addEventListener('dragstart', function () {
 		draggedItem = item;
 		setTimeout(function () {
@@ -14,32 +15,37 @@ for (let i = 0; i < list_items.length; i++) {
 	});
 
 	item.addEventListener('dragend', function () {
+		section_target = item.parentElement.id;
 		setTimeout(function () {
 			draggedItem.style.display = 'block';
 			draggedItem = null;
 		}, 0);
+		changeSection(item_id,section_target);
+		location.reload();
 	})
 
-	for (let j = 0; j < lists.length; j ++) {
-		const list = lists[j];
-
+	for (let list of lists) {
+		
 		list.addEventListener('dragover', function (e) {
 			e.preventDefault();
 		});
 		
 		list.addEventListener('dragenter', function (e) {
 			e.preventDefault();
-			//this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
-		});
-
-		list.addEventListener('dragleave', function (e) {
-			//this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 		});
 
 		list.addEventListener('drop', function (e) {
-			console.log('drop');
 			this.append(draggedItem);
-			//this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 		});
 	}
+}
+
+const changeSection = async(id,section)=>{
+	const form = new FormData();
+	form.append("id",id);
+	form.append("section",section);
+	await fetch("http://localhost/YouCode/TaskBoard/tasks/updateSection",{
+		method: "POST",
+		body: form,
+	});
 }

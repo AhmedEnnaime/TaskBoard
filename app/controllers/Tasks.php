@@ -109,7 +109,21 @@ class Tasks extends Controller
         }
     }
 
-    public function tasks()
+    public function delete($id)
     {
+        if ($this->taskModel->deleteTask($id)) {
+            redirect("pages");
+        } else {
+            die("Something went wrong");
+        }
+    }
+
+    public function updateSection()
+    {
+        if ($this->taskModel->updateSection($_POST["id"], $_POST["section"])) {
+            redirect("pages");
+        } else {
+            die("Something went wrong");
+        }
     }
 }

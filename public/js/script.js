@@ -19,8 +19,6 @@ mark.addEventListener("click",()=>{
     modal.classList.add("hidden");
 })
 
-//console.log(members_num);
-console.log(members);
 members_num.addEventListener("change",(e)=>{
     members.innerHTML = ``;
     let member = e.target.value;

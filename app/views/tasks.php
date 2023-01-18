@@ -49,26 +49,24 @@
         <div id="ToDo" class="bg-green-200 list">
             <div class="card-head">
                 <h3 class="font-bold">To Do</h3>
-                <h4 class="font-bold">2</h4>
+                <h4 class="font-bold"><?php echo count($data["ToDo"]); ?></h4>
             </div>
             <hr>
             <?php foreach ($data["ToDo"] as $todo) : ?>
-                <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" draggable="true">
+                <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" data-id="<?php echo $todo->id; ?>" draggable="true">
                     <div class="flex flex-col gap-y-8">
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
                                 <p><?php echo $todo->title; ?></p>
-
-                                <?php foreach ($data["TodoTaskMembers"] as $todoMembers) : ?>
-
-                                    <div class="flex flex-row items-center gap-x-4 pb-4">
-                                        <div class="rounded-full w-8 h-8 p-2 bg-orange-800"><?php echo substr($todoMembers->name, 0, 1); ?></div>
-                                    </div>
-                                <?php endforeach; ?>
+                                <div class="flex flex-row items-center gap-x-4 pb-4">
+                                    <?php foreach ($data["TodoTaskMembers"] as $todoMembers) : ?>
+                                        <div class="flex items-center justify-center rounded-full w-8 h-8 p-2 bg-orange-800"><?php echo substr($todoMembers->name, 0, 1); ?></div>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
 
                             <div class="flex flex-col items-center gap-y-4 pt-2">
-                                <i class="fa-solid fa-trash cursor-pointer"></i>
+                                <a href="<?php echo URLROOT; ?>/tasks/delete/<?php echo $todo->id; ?>"> <i class="fa-solid fa-trash cursor-pointer"></i></a>
                                 <i class="fa-solid fa-pen cursor-pointer"></i>
                             </div>
 
@@ -83,36 +81,63 @@
         <div id="Doing" class="bg-green-200 list">
             <div class="card-head">
                 <h3 class="font-bold">Doing</h3>
-                <h4 class="font-bold">4</h4>
+                <h4 class="font-bold"><?php echo count($data["Doing"]); ?></h4>
             </div>
             <hr>
-            <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" draggable="true">
-                <div class="flex flex-col gap-y-8">
-                    <div class="flex flex-row items-center justify-between px-4">
-                        <div class="flex flex-col items-center gap-y-4 pt-2">
-                            <p>login page front end</p>
-                            <div class="flex flex-row items-center gap-x-4 pb-4">
-                                <div class="rounded-full w-8 h-8 p-2 bg-orange-800">S</div>
-                                <div class="rounded-full w-8 h-8 p-2 bg-orange-800">S</div>
+            <?php foreach ($data["Doing"] as $doing) : ?>
+                <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" data-id="<?php echo $doing->id; ?>" draggable="true">
+                    <div class="flex flex-col gap-y-8">
+                        <div class="flex flex-row items-center justify-between px-4">
+                            <div class="flex flex-col items-center gap-y-4 pt-2">
+                                <p><?php echo $doing->title; ?></p>
+                                <div class="flex flex-row items-center gap-x-4 pb-4">
+                                    <?php foreach ($data["DoingTaskMembers"] as $doingMembers) : ?>
+                                        <div class="flex items-center justify-center rounded-full w-8 h-8 p-2 bg-orange-800"><?php echo substr($doingMembers->name, 0, 1); ?></div>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="flex flex-col items-center gap-y-4 pt-2">
-                            <i class="fa-solid fa-trash cursor-pointer"></i>
-                            <i class="fa-solid fa-pen cursor-pointer"></i>
-                        </div>
+                            <div class="flex flex-col items-center gap-y-4 pt-2">
+                                <a href="<?php echo URLROOT; ?>/tasks/delete/<?php echo $doing->id; ?>"> <i class="fa-solid fa-trash cursor-pointer"></i></a>
+                                <i class="fa-solid fa-pen cursor-pointer"></i>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            <?php endforeach; ?>
+
         </div>
 
         <div id="Done" class="bg-green-200 list">
             <div class="card-head">
                 <h3 class="font-bold">Done</h3>
-                <h4 class="font-bold">1</h4>
+                <h4 class="font-bold"><?php echo count($data["Done"]); ?></h4>
             </div>
             <hr>
+            <?php foreach ($data["Done"] as $done) : ?>
+                <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" data-id="<?php echo $done->id; ?>" draggable="true">
+                    <div class="flex flex-col gap-y-8">
+                        <div class="flex flex-row items-center justify-between px-4">
+                            <div class="flex flex-col items-center gap-y-4 pt-2">
+                                <p><?php echo $done->title; ?></p>
+                                <div class="flex flex-row items-center gap-x-4 pb-4">
+                                    <?php foreach ($data["DoneTaskMembers"] as $doneMembers) : ?>
+                                        <div class="flex items-center justify-center rounded-full w-8 h-8 bg-orange-800"><?php echo substr($doneMembers->name, 0, 1); ?></div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col items-center gap-y-4 pt-2">
+                                <a href="<?php echo URLROOT; ?>/tasks/delete/<?php echo $done->id; ?>"> <i class="fa-solid fa-trash cursor-pointer"></i></a>
+                                <i class="fa-solid fa-pen cursor-pointer"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
     <?php require APPROOT . '/views/includes/footer.php'; ?>
