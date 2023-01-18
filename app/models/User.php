@@ -68,6 +68,42 @@ class User extends Model
         }
     }
 
+    public function update($data)
+    {
+        try {
+            if (empty($data["img"])) {
+                $query = "UPDATE " . $this->table . " SET name = :name,birthday = :birthday,email = :email,password = :password WHERE id = :id";
+                $this->db->query($query);
+                $this->db->bind(":id", $data["id"]);
+                $this->db->bind(":name", $data["name"]);
+                $this->db->bind(":birthday", $data["birthday"]);
+                $this->db->bind(":email", $data["email"]);
+                $this->db->bind(":password", $data["password"]);
+                if ($this->db->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                $query = "UPDATE " . $this->table . " SET name = :name,birthday = :birthday,email = :email,password = :password,img = :img WHERE id = :id";
+                $this->db->query($query);
+                $this->db->bind(":id", $data["id"]);
+                $this->db->bind(":name", $data["name"]);
+                $this->db->bind(":birthday", $data["birthday"]);
+                $this->db->bind(":email", $data["email"]);
+                $this->db->bind(":password", $data["password"]);
+                $this->db->bind(":img", $data["img"]);
+                if ($this->db->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
     public function getLoggedUserInfo()
     {
         return $this->LoggedInUser();
