@@ -16,11 +16,37 @@ class Tasks extends Controller
 
     public function index($id)
     {
+
         $user = $this->userModel->getLoggedUserInfo();
         $workspace = $this->workspaceModel->getWorkspaceById($id);
+        $section = [
+            "workspace_id" => $workspace->id,
+        ];
+        $TodoTasks = $this->taskModel->getToDoTasks($section);
+        $DoingTasks = $this->taskModel->getDoingTasks($section);
+        $DoneTasks = $this->taskModel->getDoneTasks($section);
+        //die(print_r($TodoTasks));
+        foreach ($TodoTasks as $todo) {
+            $TodoTaskMembers = $this->taskModel->getToDoTaskMembers($todo->id);
+        }
+
+        foreach ($DoingTasks as $doing) {
+            $DoingTaskMembers = $this->taskModel->getDoingTaskMembers($doing->id);
+        }
+
+        foreach ($DoneTasks as $done) {
+            $DoneTaskMembers = $this->taskModel->getDoneTaskMembers($done->id);
+        }
+
         $data = [
             'user' => $user,
             'workspace' => $workspace,
+            'ToDo' => $TodoTasks,
+            'Doing' => $DoingTasks,
+            'Done' => $DoneTasks,
+            'TodoTaskMembers' => $TodoTaskMembers,
+            'DoingTaskMembers' => $DoingTaskMembers,
+            'DoneTaskMembers' => $DoneTaskMembers,
         ];
         $this->view("tasks", $data);
     }

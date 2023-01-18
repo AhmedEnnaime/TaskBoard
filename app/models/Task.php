@@ -71,11 +71,12 @@ class Task extends Model
         }
     }
 
-    public function getToDoTasks()
+    public function getToDoTasks($data)
     {
         try {
-            $query = "SELECT * FROM " . $this->table . " WHERE section = 'ToDo'";
+            $query = "SELECT t.* FROM " . $this->table . " t WHERE t.section = 'ToDo' AND t.workspace_id = :workspace_id";
             $this->db->query($query);
+            $this->db->bind(":workspace_id", $data["workspace_id"]);
             $result = $this->db->resultSet();
             return $result;
         } catch (PDOException $ex) {
@@ -83,11 +84,12 @@ class Task extends Model
         }
     }
 
-    public function getDoingTasks()
+    public function getDoingTasks($data)
     {
         try {
-            $query = "SELECT * FROM " . $this->table . " WHERE section = 'Doing'";
+            $query = "SELECT t.* FROM " . $this->table . " t WHERE t.section = 'Doing' AND t.workspace_id = :workspace_id";
             $this->db->query($query);
+            $this->db->bind(":workspace_id", $data["workspace_id"]);
             $result = $this->db->resultSet();
             return $result;
         } catch (PDOException $ex) {
@@ -95,11 +97,51 @@ class Task extends Model
         }
     }
 
-    public function getDoneTasks()
+    public function getDoneTasks($data)
     {
         try {
-            $query = "SELECT * FROM " . $this->table . " WHERE section = 'Done'";
+            $query = "SELECT t.* FROM " . $this->table . " t WHERE t.section = 'Done' AND t.workspace_id = :workspace_id";
             $this->db->query($query);
+            $this->db->bind(":workspace_id", $data["workspace_id"]);
+            $result = $this->db->resultSet();
+            return $result;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    public function getToDoTaskMembers($task_id)
+    {
+        try {
+            $query = "SELECT * FROM members WHERE task_id = :task_id";
+            $this->db->query($query);
+            $this->db->bind(":task_id", $task_id);
+            $result = $this->db->resultSet();
+            return $result;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    public function getDoingTaskMembers($task_id)
+    {
+        try {
+            $query = "SELECT * FROM members WHERE task_id = :task_id";
+            $this->db->query($query);
+            $this->db->bind(":task_id", $task_id);
+            $result = $this->db->resultSet();
+            return $result;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    public function getDoneTaskMembers($task_id)
+    {
+        try {
+            $query = "SELECT * FROM members WHERE task_id = :task_id";
+            $this->db->query($query);
+            $this->db->bind(":task_id", $task_id);
             $result = $this->db->resultSet();
             return $result;
         } catch (PDOException $ex) {

@@ -35,7 +35,7 @@
             <input type="date" name="deadline" class="rounded-lg h-8 p-4">
 
             <label for="members_num">Numbers of members</label>
-            <input type="number" name="members_num" class="rounded-lg h-8 p-4 members_num">
+            <input type="number" name="members_num" placeholder="Enter members" class="rounded-lg h-8 p-4 members_num">
 
             <div class="flex flex-col items-center gap-y-4 members">
 
@@ -52,45 +52,31 @@
                 <h4 class="font-bold">2</h4>
             </div>
             <hr>
-            <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" draggable="true">
-                <div class="flex flex-col gap-y-8">
-                    <div class="flex flex-row items-center justify-between px-4">
-                        <div class="flex flex-col items-center gap-y-4 pt-2">
-                            <p>login page front end</p>
-                            <div class="flex flex-row items-center gap-x-4 pb-4">
-                                <div class="rounded-full w-8 h-8 p-2 bg-orange-800">S</div>
+            <?php foreach ($data["ToDo"] as $todo) : ?>
+                <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" draggable="true">
+                    <div class="flex flex-col gap-y-8">
+                        <div class="flex flex-row items-center justify-between px-4">
+                            <div class="flex flex-col items-center gap-y-4 pt-2">
+                                <p><?php echo $todo->title; ?></p>
+
+                                <?php foreach ($data["TodoTaskMembers"] as $todoMembers) : ?>
+
+                                    <div class="flex flex-row items-center gap-x-4 pb-4">
+                                        <div class="rounded-full w-8 h-8 p-2 bg-orange-800"><?php echo substr($todoMembers->name, 0, 1); ?></div>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-                        </div>
 
-                        <div class="flex flex-col items-center gap-y-4 pt-2">
-                            <i class="fa-solid fa-trash cursor-pointer"></i>
-                            <i class="fa-solid fa-pen cursor-pointer"></i>
-                        </div>
+                            <div class="flex flex-col items-center gap-y-4 pt-2">
+                                <i class="fa-solid fa-trash cursor-pointer"></i>
+                                <i class="fa-solid fa-pen cursor-pointer"></i>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" draggable="true">
-                <div class="flex flex-col gap-y-8">
-                    <div class="flex flex-row items-center justify-between px-4">
-                        <div class="flex flex-col items-center gap-y-4 pt-2">
-                            <p>login page front end</p>
-                            <div class="flex flex-row items-center gap-x-4 pb-4">
-                                <div class="rounded-full w-8 h-8 p-2 bg-orange-800">S</div>
-                                <div class="rounded-full w-8 h-8 p-2 bg-orange-800">S</div>
-                                <div class="rounded-full w-8 h-8 p-2 bg-orange-800">S</div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col items-center gap-y-4 pt-2">
-                            <i class="fa-solid fa-trash cursor-pointer"></i>
-                            <i class="fa-solid fa-pen cursor-pointer"></i>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
 
         </div>
 
