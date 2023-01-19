@@ -48,11 +48,19 @@
             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-3">
 
                 <?php foreach ($data['workspaces'] as $workspace) : ?>
-                    <a href="<?php echo URLROOT; ?>/tasks/<?php echo $workspace->id; ?>">
-                        <div class="bg-red-200 h-28 rounded-xl cursor-pointer" style="background: url('<?php echo URLROOT; ?>/img/uploads/workspaces/<?php echo $workspace->img; ?>');">
-                            <h4 class="text-center pt-10 font-bold"><?php echo $workspace->title; ?></h4>
+                    <div class="flex flex-col">
+                        <a href="<?php echo URLROOT; ?>/tasks/<?php echo $workspace->id; ?>">
+                            <div class="h-28 rounded-xl cursor-pointer" style="background: url('<?php echo URLROOT; ?>/img/uploads/workspaces/<?php echo $workspace->img; ?>');">
+
+                            </div>
+                        </a>
+                        <div class="flex flex-row gap-x-16 items-center pt-4">
+                            <h4 class="text-center font-bold"><?php echo $workspace->title; ?></h4>
+                            <a href="<?php echo URLROOT; ?>/workspaces/delete/<?php echo $workspace->id; ?>"><i class="fa-solid fa-trash text-red-600 cursor-pointer"></i></a>
+                            <a href=""><i class="fa-solid fa-pen text-green-600 cursor-pointer"></i></a>
                         </div>
-                    </a>
+                    </div>
+
                 <?php endforeach; ?>
 
             </div>

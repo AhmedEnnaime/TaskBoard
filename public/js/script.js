@@ -26,7 +26,7 @@ members_num.addEventListener("change",(e)=>{
     while(i < member){
         members.innerHTML += `
         <label for="member_name">Name of member ${i+1} </label>
-        <input type="text" name="name[]" class="rounded-lg h-8 p-4">
+        <input placeholder="Enter name of member ${i+1}" type="text" name="name[]" class="rounded-lg h-8 p-4">
         `
         i++;
     }

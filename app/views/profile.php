@@ -23,22 +23,22 @@
 
                 <div class="flex flex-col gap-y-2">
                     <label for="">Full name</label>
-                    <input placeholder="Enter name" value="<?php echo $data["user"]->name; ?>" class="w-96 h-12 border-2 rounded-lg pl-4 border-black border-solid" name="name" type="text">
+                    <input placeholder="Enter name" value="<?php echo $data["user"]->name; ?>" class="w-full h-12 border-2 rounded-lg pl-4 border-black border-solid" name="name" type="text">
                 </div>
 
                 <div class="flex flex-col gap-y-2">
                     <label for="">Birthday</label>
-                    <input class="w-96 h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->birthday; ?>" name="birthday" type="date">
+                    <input class="w-full h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->birthday; ?>" name="birthday" type="date">
                 </div>
 
                 <div class="flex flex-col gap-y-2">
                     <label for="">Email</label>
-                    <input placeholder="Enter email" class="w-96 h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->email; ?>" name="email" type="email">
+                    <input placeholder="Enter email" class="w-full h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->email; ?>" name="email" type="email">
                 </div>
 
                 <div class="flex flex-col gap-y-2">
                     <label for="">Password</label>
-                    <input placeholder="Enter password" class="w-96 h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->password; ?>" name="password" type="password">
+                    <input placeholder="Enter password" class="w-full h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->password; ?>" name="password" type="password">
                 </div>
 
                 <button type="submit" class="w-48 h-12 bg-blue-400 rounded-lg">Update</button>

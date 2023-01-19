@@ -71,15 +71,10 @@ class Workspaces extends Controller
 
     public function delete($id)
     {
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if ($this->workspaceModel->deleteWorkspace($id)) {
-                redirect("pages");
-            } else {
-                die("Something went wrong");
-            }
-        } else {
+        if ($this->workspaceModel->deleteWorkspace($id)) {
             redirect("pages");
+        } else {
+            die("Something went wrong");
         }
     }
 }

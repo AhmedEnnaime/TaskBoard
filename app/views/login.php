@@ -19,7 +19,7 @@
                     <label for="">Password</label>
                     <input placeholder="Enter password" class="h-12 border-2 rounded-lg pl-4 border-black border-solid" name="password" type="password">
                 </div>
-                <input type="submit" class="w-48 h-12 bg-blue-600 text-white mt-8 rounded-lg" value="Login">
+                <input type="submit" class="w-48 h-12 bg-blue-600 text-white mt-8 rounded-lg cursor-pointer" value="Login">
                 <a class="underline pb-4" href="<?php echo URLROOT; ?>/users/signup">Don't have an account ? Signup</a>
 
             </form>
