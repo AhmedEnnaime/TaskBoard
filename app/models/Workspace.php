@@ -55,6 +55,20 @@ class Workspace extends Model
         return $this->delete($id);
     }
 
+    public function search($data)
+    {
+        try {
+            $query = "SELECT * FROM " . $this->table . " WHERE title LIKE :title AND user_id = :user_id";
+            $this->db->query($query);
+            $this->db->bind(":title", $data["title"]);
+            $this->db->bind(":user_id", $data["user_id"]);
+            $result = $this->db->resultSet();
+            return $result;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
     public function updateWorkspace($id)
     {
     }

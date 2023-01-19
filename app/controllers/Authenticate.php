@@ -20,7 +20,6 @@ class Authenticate extends Controller
     public function login()
     {
 
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -32,6 +31,7 @@ class Authenticate extends Controller
                 'password_err' => '',
             ];
 
+
             // Validation Form
 
             if (empty($data['email'])) {
@@ -42,15 +42,13 @@ class Authenticate extends Controller
                 $data['password_err'] = 'Please enter password';
             }
 
+
             if (empty($data['email_err']) && empty($data['password_err'])) {
 
                 $loggedInUser = $this->userModel->login($data['email'], $data['password']);
                 $userId = $loggedInUser->id;
-                if ($loggedInUser) {
 
-                    if (isLoggedIn()) {
-                        redirect("/");
-                    }
+                if ($loggedInUser) {
                     $jwt = new JWTGenerate();
                     $token = $jwt->generate($userId);
                     $cookie = setcookie("jwt", $token, 0, '/', '', false, true);

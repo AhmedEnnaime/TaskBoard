@@ -19,7 +19,6 @@ class Users extends Controller
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
             $data = [
                 'name' => trim($_POST['name']),
                 'birthday' => trim($_POST['birthday']),
@@ -32,7 +31,6 @@ class Users extends Controller
                 'password_err' => '',
                 'img_err' => '',
             ];
-
 
             // Validation Form
 

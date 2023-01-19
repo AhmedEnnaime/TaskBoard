@@ -5,12 +5,17 @@
 <body>
     <?php require APPROOT . '/views/includes/navbar.php'; ?>
 
-    <div class="flex flex-col gap-y-16 mt-16 px-24">
-        <div class="flex flex-row items-center justify-between">
+    <div class="flex flex-col gap-y-16 md:mt-16 md:px-24">
+        <div class="flex flex-col gap-y-5 md:flex-row items-center justify-between mt-10">
             <div class="flex flex-row items-center gap-x-4">
-                <i class="fa-solid fa-briefcase text-2xl"></i>
+                <i class="fa-solid fa-briefcase text-4xl"></i>
                 <h2 class="text-4xl">My workspaces</h2>
             </div>
+            <form class="flex flex-row items-center justify-center gap-x-4" action="<?php echo URLROOT; ?>/pages" method="POST">
+                <input class="border-2 border-solid border-black rounded-lg w-80 h-10 pl-4" placeholder="Enter title of workspace" type="text" name="title">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass text-2xl"></i></button>
+
+            </form>
             <div class="rounded-full bg-blue-400 p-4 cursor-pointer add-btn">
                 <i class="fa-solid fa-plus"></i>
             </div>
@@ -40,7 +45,7 @@
         </div>
         <?php if ($data["workspaces"]) { ?>
 
-            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-3">
 
                 <?php foreach ($data['workspaces'] as $workspace) : ?>
                     <a href="<?php echo URLROOT; ?>/tasks/<?php echo $workspace->id; ?>">

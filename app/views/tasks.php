@@ -45,7 +45,7 @@
         </form>
     </div>
 
-    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center px-16 pt-8">
+    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center px-3 pt-8">
         <div id="ToDo" class="bg-green-200 list">
             <div class="card-head">
                 <h3 class="font-bold">To Do</h3>
@@ -53,7 +53,7 @@
             </div>
             <hr>
             <?php foreach ($data["ToDo"] as $todo) : ?>
-                <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" data-id="<?php echo $todo->id; ?>" draggable="true">
+                <div class="mt-4 rounded-xl w-full bg-purple-200 list-item" data-id="<?php echo $todo->id; ?>" draggable="true">
                     <div class="flex flex-col gap-y-8">
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
@@ -86,7 +86,7 @@
             </div>
             <hr>
             <?php foreach ($data["Doing"] as $doing) : ?>
-                <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" data-id="<?php echo $doing->id; ?>" draggable="true">
+                <div class="mt-4 rounded-xl w-full bg-purple-200 list-item" data-id="<?php echo $doing->id; ?>" draggable="true">
                     <div class="flex flex-col gap-y-8">
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
@@ -118,7 +118,7 @@
             </div>
             <hr>
             <?php foreach ($data["Done"] as $done) : ?>
-                <div class="mt-4 rounded-xl w-96 bg-purple-200 list-item" data-id="<?php echo $done->id; ?>" draggable="true">
+                <div class="mt-4 rounded-xl w-full bg-purple-200 list-item" data-id="<?php echo $done->id; ?>" draggable="true">
                     <div class="flex flex-col gap-y-8">
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
