@@ -38,17 +38,29 @@
                 <button class="p-4 mt-4 border-2 border-solid bg-blue-600" type="submit">Add</button>
             </form>
         </div>
+        <?php if ($data["workspaces"]) { ?>
 
+            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 
-        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            <?php foreach ($data['workspaces'] as $workspace) : ?>
-                <a href="<?php echo URLROOT; ?>/tasks/<?php echo $workspace->id; ?>">
-                    <div class="bg-red-200 h-28 rounded-xl cursor-pointer" style="background: url('<?php echo URLROOT; ?>/img/uploads/workspaces/<?php echo $workspace->img; ?>');">
-                        <h4 class="text-center pt-10 font-bold"><?php echo $workspace->title; ?></h4>
-                    </div>
-                </a>
-            <?php endforeach; ?>
-        </div>
+                <?php foreach ($data['workspaces'] as $workspace) : ?>
+                    <a href="<?php echo URLROOT; ?>/tasks/<?php echo $workspace->id; ?>">
+                        <div class="bg-red-200 h-28 rounded-xl cursor-pointer" style="background: url('<?php echo URLROOT; ?>/img/uploads/workspaces/<?php echo $workspace->img; ?>');">
+                            <h4 class="text-center pt-10 font-bold"><?php echo $workspace->title; ?></h4>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+
+            </div>
+        <?php
+        } else { ?>
+            <div class="flex items-center justify-center">
+                <img class="h-96" src="<?php echo URLROOT; ?>/img/undraw_no_data_re_kwbl.svg" alt="">
+            </div>
+
+        <?php
+
+        }
+        ?>
 
     </div>
 

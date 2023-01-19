@@ -2,47 +2,55 @@
 
 <?php require APPROOT . '/views/includes/header.php'; ?>
 
-<body>
+<body class="bg-signup-bg bg-no-repeat bg-center bg-cover h-96">
 
-    <div class="flex flex-row">
-        <img class="h-screen w-2/4 pl-8" src="<?php echo URLROOT; ?>/img/undraw_secure_login_pdn4.svg" alt="">
+    <div class="flex flex-row items-center px-24">
+        <div class="flex flex-col items-center w-1/2 h-fit bg-blue-400 mt-24 rounded-lg drop-shadow-md">
+            <h1 class="text-4xl pt-4">Signup</h1>
 
-        <form class="flex flex-col w-2/4 justify-center items-center bg-blue-200" action="<?php echo URLROOT; ?>/users/signup" method="POST" enctype="multipart/form-data">
-            <h2 class="text-4xl text-center mb-16">Signup</h2>
-            <div class="flex flex-col gap-y-2">
-                <label for="name">Full name</label>
-                <input class="border border-1 border-solid border-black w-48 h-8 rounded-lg pl-4 mb-4" name="name" type="text" placeholder="Enter name">
-            </div>
+            <form action="" class="grid gap-4 gap-y-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 mt-16 justify-center items-center">
+                <div class="flex flex-col gap-y-2">
+                    <label for="">Full name</label>
+                    <input placeholder="Enter name" value="<?php echo $data["user"]->name; ?>" class="w-fit h-12 border-2 rounded-lg pl-4 border-black border-solid" name="name" type="text">
+                </div>
 
-            <div class="flex flex-col gap-y-2">
-                <label for="name">Birthday</label>
-                <input class="border border-1 border-solid border-black w-48 h-8 rounded-lg pl-4 mb-4" name="birthday" type="date" placeholder="Enter birthday">
-            </div>
+                <div class="flex flex-col gap-y-2">
+                    <label for="">Birthday</label>
+                    <input class="w-fit h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->birthday; ?>" name="birthday" type="date">
+                </div>
 
-            <div class="flex flex-col gap-y-2">
-                <label for="name">Email</label>
-                <input class="border border-1 border-solid border-black w-48 h-8 rounded-lg pl-4 mb-4" name="email" type="email" placeholder="Enter email">
+                <div class="flex flex-col gap-y-2">
+                    <label for="">Email</label>
+                    <input placeholder="Enter email" class="w-fit h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->email; ?>" name="email" type="email">
+                </div>
 
-            </div>
+                <div class="flex flex-col gap-y-2">
+                    <label for="">Password</label>
+                    <input placeholder="Enter password" class="w-fit h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->password; ?>" name="password" type="password">
+                </div>
 
-            <div class="flex flex-col gap-y-2">
-                <label for="name">Password</label>
-                <input class="border border-1 border-solid border-black w-48 h-8 rounded-lg pl-4 mb-4" name="password" type="password" placeholder="Enter password">
-            </div>
+                <div class="flex flex-col items-center gap-y-4">
+                    <button type="submit" class="w-48 h-12 bg-red-400  rounded-lg">Signup</button>
 
-
-            <div class="flex flex-col gap-y-2">
-                <label for="name">Image</label>
-                <input class="border border-1 border-solid border-black w-48 h-8 rounded-lg mb-16" name="img" type="file" placeholder="Enter image">
-
-            </div>
+                    <p class="cursor-pointer underline">Already have an account ? Log in</p>
+                </div>
 
 
-            <button class="w-48 h-8 rounded-lg bg-red-800 text-white" type="submit">Signup</button>
 
-        </form>
+            </form>
 
-        <!-- <p>Already have an account ? Login</p> -->
+
+
+        </div>
+
+        <div class="w-1/2 pt-64">
+            <img src="<?php echo URLROOT; ?>/img/undraw_hello_re_3evm.svg" alt="">
+
+        </div>
+
+    </div>
+
+    <!-- <p>Already have an account ? Login</p> -->
 
     </div>
 

@@ -34,7 +34,15 @@ class Workspace extends Model
 
     public function getWorkspaces()
     {
-        return $this->getTable();
+        try {
+            $user = $this->LoggedInUser();
+            $this->db->query("SELECT * FROM " . $this->table . " WHERE user_id = :user_id");
+            $this->db->bind(":user_id", $user->id);
+            $result = $this->db->resultSet();
+            return $result;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
     }
 
     public function getWorkspaceById($id)

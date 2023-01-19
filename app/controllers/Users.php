@@ -113,6 +113,7 @@ class Users extends Controller
                 'password_err' => '',
             ];
 
+
             if (empty($data['email'])) {
                 $data['email_err'] = 'Please enter email';
             }

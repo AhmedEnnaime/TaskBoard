@@ -62,6 +62,7 @@
                                     <?php foreach ($data["TodoTaskMembers"] as $todoMembers) : ?>
                                         <div class="flex items-center justify-center rounded-full w-8 h-8 p-2 bg-orange-800"><?php echo substr($todoMembers->name, 0, 1); ?></div>
                                     <?php endforeach; ?>
+
                                 </div>
                             </div>
 

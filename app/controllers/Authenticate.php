@@ -48,7 +48,7 @@ class Authenticate extends Controller
                 $userId = $loggedInUser->id;
                 if ($loggedInUser) {
 
-                    if (isset($_COOKIE["jwt"])) {
+                    if (isLoggedIn()) {
                         redirect("/");
                     }
                     $jwt = new JWTGenerate();

@@ -62,7 +62,7 @@ class Task extends Model
     public function getTasksByWorkspace($id)
     {
         try {
-            $this->db->query("SELECT * FROM " . $this->table . " WHERE workspace_id = :workspace_id");
+            $this->db->query("SELECT * FROM " . $this->table . " WHERE workspace_id = :workspace_id ORDER BY deadline");
             $this->db->bind(":workspace_id", $id);
             $result = $this->db->resultSet();
             return $result;
@@ -74,7 +74,7 @@ class Task extends Model
     public function getToDoTasks($data)
     {
         try {
-            $query = "SELECT t.* FROM " . $this->table . " t WHERE t.section = 'ToDo' AND t.workspace_id = :workspace_id";
+            $query = "SELECT t.* FROM " . $this->table . " t WHERE t.section = 'ToDo' AND t.workspace_id = :workspace_id ORDER BY t.deadline";
             $this->db->query($query);
             $this->db->bind(":workspace_id", $data["workspace_id"]);
             $result = $this->db->resultSet();
@@ -87,7 +87,7 @@ class Task extends Model
     public function getDoingTasks($data)
     {
         try {
-            $query = "SELECT t.* FROM " . $this->table . " t WHERE t.section = 'Doing' AND t.workspace_id = :workspace_id";
+            $query = "SELECT t.* FROM " . $this->table . " t WHERE t.section = 'Doing' AND t.workspace_id = :workspace_id ORDER BY t.deadline";
             $this->db->query($query);
             $this->db->bind(":workspace_id", $data["workspace_id"]);
             $result = $this->db->resultSet();
@@ -100,7 +100,7 @@ class Task extends Model
     public function getDoneTasks($data)
     {
         try {
-            $query = "SELECT t.* FROM " . $this->table . " t WHERE t.section = 'Done' AND t.workspace_id = :workspace_id";
+            $query = "SELECT t.* FROM " . $this->table . " t WHERE t.section = 'Done' AND t.workspace_id = :workspace_id ORDER BY t.deadline";
             $this->db->query($query);
             $this->db->bind(":workspace_id", $data["workspace_id"]);
             $result = $this->db->resultSet();

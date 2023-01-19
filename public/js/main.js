@@ -6,7 +6,7 @@ let draggedItem = null;
 for (let item of list_items) {
 	let section_target = item.parentElement.id;
 	let item_id = item.dataset.id;
-	console.log(section_target);
+	
 	item.addEventListener('dragstart', function () {
 		draggedItem = item;
 		setTimeout(function () {
