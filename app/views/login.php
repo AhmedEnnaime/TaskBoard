@@ -10,16 +10,18 @@
 
             <form action="<?php echo URLROOT; ?>/authenticate/login" method="POST" class="flex flex-col items-center gap-y-8 pt-8">
 
-                <div class="flex flex-col gap-y-2 w-96">
+                <div class="flex flex-col gap-y-2 w-full">
                     <label for="">Email</label>
-                    <input placeholder="Enter email" class="h-12 border-2 rounded-lg pl-4 border-black border-solid" name="email" type="email">
+                    <input placeholder="Enter email" class="h-12 border-2 rounded-lg pl-4 <?php echo (!empty($data['email_err'])) ? 'border-red-400' : 'border-black'; ?> border-solid" name="email" type="email">
+                    <span class="text-red-400"><?php echo $data['email_err'];  ?></span>
                 </div>
 
-                <div class="flex flex-col gap-y-2 w-96">
+                <div class="flex flex-col gap-y-2 w-full">
                     <label for="">Password</label>
-                    <input placeholder="Enter password" class="h-12 border-2 rounded-lg pl-4 border-black border-solid" name="password" type="password">
+                    <input placeholder="Enter password" class="h-12 border-2 rounded-lg pl-4 <?php echo (!empty($data['password_err'])) ? 'border-red-400' : 'border-black'; ?> border-solid" name="password" type="password">
+                    <span class="text-red-400"><?php echo $data['password_err'];  ?></span>
                 </div>
-                <input type="submit" class="w-48 h-12 bg-blue-600 text-white mt-8 rounded-lg cursor-pointer" value="Login">
+                <input type="submit" class="w-full h-12 bg-blue-600 text-white mt-8 rounded-lg cursor-pointer" value="Login">
                 <a class="underline pb-4" href="<?php echo URLROOT; ?>/users/signup">Don't have an account ? Signup</a>
 
             </form>

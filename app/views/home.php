@@ -22,7 +22,7 @@
 
         </div>
 
-        <div class="flex flex-col gap-y-4 items-center rounded-lg bg-red-400 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-96 h-96 h-fit hidden drop-shadow-lg modal">
+        <div class="flex flex-col gap-y-4 items-center rounded-lg bg-gray-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-96 h-96 h-fit hidden drop-shadow-lg modal">
 
             <h3 class="pt-8 text-2xl">Add workspace</h3>
 
@@ -32,15 +32,18 @@
             <form action="<?php echo URLROOT; ?>/workspaces/add" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4">
 
                 <label for="title">Title</label>
-                <input name="title" class="rounded-lg h-8 p-4" type="text" placeholder="Enter title">
+                <input name="title" class="rounded-lg h-8 p-4 <?php echo (!empty($data['title_err'])) ? 'border-red-400' : 'border-black'; ?>" type="text" placeholder="Enter title" required>
+                <span class="text-red-400"><?php echo $data['title_err'];  ?></span>
 
                 <label for="description">Description</label>
-                <textarea placeholder="Enter description" class="rounded-lg p-4" name="description" id="" cols="20" rows="5"></textarea>
+                <textarea placeholder="Enter description" class="rounded-lg p-4 <?php echo (!empty($data['description_err'])) ? 'border-red-400' : 'border-black'; ?>" name="description" id="" cols="20" rows="5" required></textarea>
+                <span class="text-red-400"><?php echo $data['description_err'];  ?></span>
 
                 <label for="name">Image</label>
-                <input name="img" type="file">
+                <input class="<?php echo (!empty($data['img_err'])) ? 'border-red-400' : 'border-black'; ?>" name="img" type="file" required>
+                <span class="text-red-400"><?php echo $data['img_err'];  ?></span>
 
-                <button class="p-4 mt-4 border-2 border-solid bg-blue-600" type="submit">Add</button>
+                <button class="p-4 mt-4 border-2 border-solid bg-blue-600 rounded-lg border-none text-white" type="submit">Add</button>
             </form>
         </div>
         <?php if ($data["workspaces"]) { ?>
@@ -57,7 +60,7 @@
                         <div class="flex flex-row gap-x-16 items-center pt-4">
                             <h4 class="text-center font-bold"><?php echo $workspace->title; ?></h4>
                             <a href="<?php echo URLROOT; ?>/workspaces/delete/<?php echo $workspace->id; ?>"><i class="fa-solid fa-trash text-red-600 cursor-pointer"></i></a>
-                            <a href=""><i class="fa-solid fa-pen text-green-600 cursor-pointer"></i></a>
+                            <a href=""><i class="fa-solid fa-pen text-blue-600 cursor-pointer"></i></a>
                         </div>
                     </div>
 

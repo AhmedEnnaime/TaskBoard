@@ -56,7 +56,7 @@ $current_date = date("Y-m-d");
             </div>
             <hr>
             <?php foreach ($data["ToDo"] as $todo) : ?>
-                <div class="mt-4 rounded-xl w-full bg-purple-200 list-item" data-id="<?php echo $todo->id; ?>" draggable="true">
+                <div class="mt-4 rounded-xl w-full bg-white list-item" data-id="<?php echo $todo->id; ?>" draggable="true">
                     <div class="flex flex-col gap-y-8">
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
@@ -70,15 +70,15 @@ $current_date = date("Y-m-d");
                                 </div>
                                 <div class="flex flex-row items-center gap-x-4 pb-4">
                                     <?php foreach ($data["TodoTaskMembers"] as $todoMembers) : ?>
-                                        <div class="flex items-center justify-center rounded-full w-8 h-8 p-2 bg-orange-800"><?php echo substr($todoMembers->name, 0, 1); ?></div>
+                                        <div class="flex items-center justify-center rounded-full w-8 h-8 p-2 bg-sky-300"><?php echo substr($todoMembers->name, 0, 1); ?></div>
                                     <?php endforeach; ?>
 
                                 </div>
                             </div>
 
                             <div class="flex flex-col items-center gap-y-4 pt-2">
-                                <a href="<?php echo URLROOT; ?>/tasks/delete/<?php echo $todo->id; ?>"> <i class="fa-solid fa-trash cursor-pointer"></i></a>
-                                <i class="fa-solid fa-pen cursor-pointer"></i>
+                                <a href="<?php echo URLROOT; ?>/tasks/delete/<?php echo $todo->id; ?>"> <i class="fa-solid fa-trash cursor-pointer text-red-600"></i></a>
+                                <i class="fa-solid fa-pen cursor-pointer text-blue-600"></i>
                             </div>
 
                         </div>
@@ -96,7 +96,7 @@ $current_date = date("Y-m-d");
             </div>
             <hr>
             <?php foreach ($data["Doing"] as $doing) : ?>
-                <div class="mt-4 rounded-xl w-full bg-purple-200 list-item" data-id="<?php echo $doing->id; ?>" draggable="true">
+                <div class="mt-4 rounded-xl w-full bg-white list-item" data-id="<?php echo $doing->id; ?>" draggable="true">
                     <div class="flex flex-col gap-y-8">
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
@@ -111,14 +111,14 @@ $current_date = date("Y-m-d");
 
                                 <div class="flex flex-row items-center gap-x-4 pb-4">
                                     <?php foreach ($data["DoingTaskMembers"] as $doingMembers) : ?>
-                                        <div class="flex items-center justify-center rounded-full w-8 h-8 p-2 bg-orange-800"><?php echo substr($doingMembers->name, 0, 1); ?></div>
+                                        <div class="flex items-center justify-center rounded-full w-8 h-8 p-2 bg-sky-300"><?php echo substr($doingMembers->name, 0, 1); ?></div>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
 
                             <div class="flex flex-col items-center gap-y-4 pt-2">
-                                <a href="<?php echo URLROOT; ?>/tasks/delete/<?php echo $doing->id; ?>"> <i class="fa-solid fa-trash cursor-pointer"></i></a>
-                                <i class="fa-solid fa-pen cursor-pointer"></i>
+                                <a href="<?php echo URLROOT; ?>/tasks/delete/<?php echo $doing->id; ?>"> <i class="fa-solid fa-trash cursor-pointer text-red-600"></i></a>
+                                <i class="fa-solid fa-pen cursor-pointer text-blue-600"></i>
                             </div>
 
                         </div>
@@ -136,21 +136,21 @@ $current_date = date("Y-m-d");
             </div>
             <hr>
             <?php foreach ($data["Done"] as $done) : ?>
-                <div class="mt-4 rounded-xl w-full bg-purple-200 list-item" data-id="<?php echo $done->id; ?>" draggable="true">
+                <div class="mt-4 rounded-xl w-full bg-white list-item" data-id="<?php echo $done->id; ?>" draggable="true">
                     <div class="flex flex-col gap-y-8">
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
                                 <p><?php echo $done->title; ?></p>
                                 <div class="flex flex-row items-center gap-x-4 pb-4">
                                     <?php foreach ($data["DoneTaskMembers"] as $doneMembers) : ?>
-                                        <div class="flex items-center justify-center rounded-full w-8 h-8 bg-orange-800"><?php echo substr($doneMembers->name, 0, 1); ?></div>
+                                        <div class="flex items-center justify-center rounded-full w-8 h-8 bg-sky-300"><?php echo substr($doneMembers->name, 0, 1); ?></div>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
 
                             <div class="flex flex-col items-center gap-y-4 pt-2">
-                                <a href="<?php echo URLROOT; ?>/tasks/delete/<?php echo $done->id; ?>"> <i class="fa-solid fa-trash cursor-pointer"></i></a>
-                                <i class="fa-solid fa-pen cursor-pointer"></i>
+                                <a href="<?php echo URLROOT; ?>/tasks/delete/<?php echo $done->id; ?>"> <i class="fa-solid fa-trash cursor-pointer text-red-600"></i></a>
+                                <i class="fa-solid fa-pen cursor-pointer text-blue-600"></i>
                             </div>
 
                         </div>

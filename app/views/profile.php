@@ -41,8 +41,8 @@
                     <input placeholder="Enter password" class="w-full h-12 border-2 rounded-lg pl-4 border-black border-solid" value="<?php echo $data["user"]->password; ?>" name="password" type="password">
                 </div>
 
-                <button type="submit" class="w-48 h-12 bg-blue-400 rounded-lg">Update</button>
-                <button type="reset" class="w-48 h-12 bg-red-400 rounded-lg">Clear</button>
+                <button type="submit" class="w-full h-12 bg-blue-400 rounded-lg">Update</button>
+                <button type="reset" class="w-full h-12 bg-red-400 rounded-lg">Clear</button>
 
 
 

@@ -42,7 +42,6 @@ class Workspaces extends Controller
             }
 
             if (empty($data['title_err']) && empty($data['description_err']) && empty($data['img_err'])) {
-
                 if ($this->workspaceModel->add($data)) {
                     $file = $_FILES['img']['name'];
                     $folder = './img/uploads/workspaces/' . $file;
