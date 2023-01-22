@@ -69,7 +69,34 @@ class Workspace extends Model
         }
     }
 
-    public function updateWorkspace($id)
+    public function updateWorkspace($data)
     {
+
+        try {
+            if (!empty($data["img"])) {
+                $query = "UPDATE " . $this->table . " SET title=:title,img=:img WHERE id = :id";
+                $this->db->query($query);
+                $this->db->bind(":title", $data["title"]);
+                $this->db->bind(":img", $data["img"]);
+                $this->db->bind(":id", $data["id"]);
+                if ($this->db->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                $query = "UPDATE " . $this->table . " SET title=:title WHERE id = :id";
+                $this->db->query($query);
+                $this->db->bind(":title", $data["title"]);
+                $this->db->bind(":id", $data["id"]);
+                if ($this->db->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
     }
 }
