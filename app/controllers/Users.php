@@ -17,6 +17,10 @@ class Users extends Controller
     public function signup()
     {
 
+        if (isLoggedIn()) {
+            redirect("pages");
+        }
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $data = [

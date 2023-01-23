@@ -1,7 +1,7 @@
 const members_num = document.querySelector(".members_num");
 const members = document.querySelector(".members");
 
-members_num.addEventListener("change",(e)=>{
+members_num?.addEventListener("change",(e)=>{
     members.innerHTML = ``;
     let member = e.target.value;
     let i = 0;

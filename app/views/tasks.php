@@ -61,7 +61,7 @@ $current_date = date("Y-m-d");
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
                                 <div class="flex flex-row gap-x-4">
-                                    <p><?php echo $todo->title; ?></p>
+                                    <p class="task_title"><?php echo $todo->title; ?></p>
                                     <?php if ($current_date > $todo->deadline) { ?>
                                         <p class="text-red-600 font-bold">Expired</p>
                                     <?php
@@ -106,7 +106,7 @@ $current_date = date("Y-m-d");
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
                                 <div class="flex flex-row gap-x-4">
-                                    <p><?php echo $doing->title; ?></p>
+                                    <p class="task_title"><?php echo $doing->title; ?></p>
                                     <?php if ($current_date > $doing->deadline) { ?>
                                         <p class="text-red-600 font-bold">Expired</p>
                                     <?php
@@ -150,7 +150,7 @@ $current_date = date("Y-m-d");
                     <div class="flex flex-col gap-y-8">
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
-                                <p><?php echo $done->title; ?></p>
+                                <p class="task_title"><?php echo $done->title; ?></p>
                                 <div class="flex flex-row items-center gap-x-4 pb-4">
                                     <?php foreach ($data["DoneTaskMembers"] as $doneMembers) : ?>
                                         <div class="flex items-center justify-center rounded-full w-8 h-8 bg-sky-300"><?php echo substr($doneMembers->name, 0, 1); ?></div>

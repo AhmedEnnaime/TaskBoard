@@ -126,4 +126,13 @@ class Tasks extends Controller
             die("Something went wrong");
         }
     }
+
+    public function updateTask()
+    {
+        if ($this->taskModel->updateTask($_POST["id"], $_POST["title"], $_POST["deadline"])) {
+            redirect("pages");
+        } else {
+            die("Something went wrong");
+        }
+    }
 }

@@ -165,4 +165,23 @@ class Task extends Model
             echo $ex->getMessage();
         }
     }
+
+    public function updateTask($id, $title, $deadline)
+    {
+
+        try {
+            $query = "UPDATE " . $this->table . " SET title=:title,deadline=:deadline WHERE id=:id";
+            $this->db->query($query);
+            $this->db->bind(":title", $title);
+            $this->db->bind(":deadline", $deadline);
+            $this->db->bind(":id", $id);
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
 }

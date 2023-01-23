@@ -19,6 +19,9 @@ class Authenticate extends Controller
 
     public function login()
     {
+        if (isLoggedIn()) {
+            redirect("pages");
+        }
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
