@@ -25,18 +25,35 @@ class Tasks extends Controller
         $TodoTasks = $this->taskModel->getToDoTasks($section);
         $DoingTasks = $this->taskModel->getDoingTasks($section);
         $DoneTasks = $this->taskModel->getDoneTasks($section);
-        //die(print_r($TodoTasks));
+
         foreach ($TodoTasks as $todo) {
-            $TodoTaskMembers = $this->taskModel->getToDoTaskMembers($todo->id);
+            $TodoTaskMembers = $this->taskModel->getTaskMembers($todo->id);
         }
 
         foreach ($DoingTasks as $doing) {
-            $DoingTaskMembers = $this->taskModel->getDoingTaskMembers($doing->id);
+            $DoingTaskMembers = $this->taskModel->getTaskMembers($doing->id);
         }
 
         foreach ($DoneTasks as $done) {
-            $DoneTaskMembers = $this->taskModel->getDoneTaskMembers($done->id);
+            $DoneTaskMembers = $this->taskModel->getTaskMembers($done->id);
         }
+
+        /*$TodoTaskMembers = [];
+        $DoingTaskMembers = [];
+        $DoneTaskMembers = [];
+        
+        foreach ($TodoTasks as $todo) {
+            array_push($TodoTaskMembers, $this->taskModel->getTaskMembers($todo->id));
+        }
+
+        foreach ($DoingTasks as $doing) {
+            array_push($DoingTaskMembers, $this->taskModel->getTaskMembers($doing->id));
+        }
+
+        foreach ($DoneTasks as $done) {
+            array_push($DoneTaskMembers, $this->taskModel->getTaskMembers($done->id));
+        }*/
+
 
         $data = [
             'user' => $user,

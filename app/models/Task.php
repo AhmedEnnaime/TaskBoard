@@ -110,33 +110,7 @@ class Task extends Model
         }
     }
 
-    public function getToDoTaskMembers($task_id)
-    {
-        try {
-            $query = "SELECT * FROM members WHERE task_id = :task_id";
-            $this->db->query($query);
-            $this->db->bind(":task_id", $task_id);
-            $result = $this->db->resultSet();
-            return $result;
-        } catch (PDOException $ex) {
-            echo $ex->getMessage();
-        }
-    }
-
-    public function getDoingTaskMembers($task_id)
-    {
-        try {
-            $query = "SELECT * FROM members WHERE task_id = :task_id";
-            $this->db->query($query);
-            $this->db->bind(":task_id", $task_id);
-            $result = $this->db->resultSet();
-            return $result;
-        } catch (PDOException $ex) {
-            echo $ex->getMessage();
-        }
-    }
-
-    public function getDoneTaskMembers($task_id)
+    public function getTaskMembers($task_id)
     {
         try {
             $query = "SELECT * FROM members WHERE task_id = :task_id";
