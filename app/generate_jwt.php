@@ -46,27 +46,19 @@ class JWTGenerate
             } else {
                 return $_COOKIE["jwt"];
             }
-        } else {
-            redirect("authenticate/login");
-            //echo 'Token not found in request';
-            exit;
         }
     }
 
     public static function validate()
     {
         $tokenInCookie = JWTGenerate::getToken();
-        if (!$tokenInCookie) {
-            echo "Token not found";
-            exit();
-        };
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' || $_SERVER['REQUEST_METHOD'] === 'GET' || $_SERVER['REQUEST_METHOD'] === 'UPDATE') {
             $jwt = $tokenInCookie;
             if (!$jwt) {
-                // No token was able to be extracted from the authorization header
-                redirect("authenticate/login");
-                // return false;
+                //die("no jwt");
+                //redirect("authenticate/login");
+                return false;
                 exit;
             }
 

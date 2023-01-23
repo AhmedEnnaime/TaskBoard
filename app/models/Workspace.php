@@ -73,8 +73,7 @@ class Workspace extends Model
     {
 
         try {
-            if (empty($data["img"])) {
-                //die("image");
+            if (!empty($img)) {
                 $query = "UPDATE " . $this->table . " SET title=:title,img=:img WHERE id = :id";
                 $this->db->query($query);
                 $this->db->bind(":title", $title);
@@ -86,7 +85,6 @@ class Workspace extends Model
                     return false;
                 }
             } else {
-                //die("no image");
                 $query = "UPDATE " . $this->table . " SET title=:title WHERE id = :id";
                 $this->db->query($query);
                 $this->db->bind(":title", $title);

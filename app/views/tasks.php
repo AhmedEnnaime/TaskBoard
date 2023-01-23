@@ -61,7 +61,7 @@ $current_date = date("Y-m-d");
                         <div class="flex flex-row items-center justify-between px-4">
                             <div class="flex flex-col items-center gap-y-4 pt-2">
                                 <div class="flex flex-row gap-x-4">
-                                    <p class="task_title"><?php echo $todo->title; ?></p>
+                                    <p class="task_title" onclick="updateTask(e)"><?php echo $todo->title; ?></p>
                                     <?php if ($current_date > $todo->deadline) { ?>
                                         <p class="text-red-600 font-bold">Expired</p>
                                     <?php
@@ -72,7 +72,7 @@ $current_date = date("Y-m-d");
                                     <div class="flex flex-row items-center gap-x-4">
                                         <i class="fa-solid fa-clock"></i>
                                         <?php $diff = strtotime($todo->deadline) - strtotime($current_date); ?>
-                                        <p><?php echo $diff / (24 * 60 * 60); ?> days left</p>
+                                        <p onclick="updateTask(e)"><?php echo $diff / (24 * 60 * 60); ?> days left</p>
                                     </div>
                                     <?php foreach ($data["TodoTaskMembers"] as $todoMembers) : ?>
                                         <div class="flex items-center justify-center rounded-full w-8 h-8 p-2 bg-sky-300"><?php echo substr($todoMembers->name, 0, 1); ?></div>

@@ -17,7 +17,8 @@ class Users extends Controller
     public function signup()
     {
 
-        if (isLoggedIn()) {
+        if (isset($_COOKIE["jwt"])) {
+
             redirect("pages");
         }
 

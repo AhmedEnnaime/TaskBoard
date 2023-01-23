@@ -11,13 +11,12 @@ const update_btn = document.querySelector(".update-btn");
 const task_titles = document.querySelectorAll(".task_title");
 
 for(let task_title of task_titles){
-    task_title.addEventListener("click",()=>{
-        task_title.setAttribute("contenteditable",true);
-        task_title.addEventListener("change",(e)=>{
-            console.log("success");
-            console.log(e.target.value);
-        })
-    })
+    task_title.addEventListener("click",updateTask)
+}
+const updateTask = (e) => {
+    let el = e;
+    el.setAttribute("contenteditable","true");
+
 }
 
 profile.addEventListener("click",()=>{
@@ -48,16 +47,16 @@ for(let update of updates){
     })
 }
 
-const updateTask = async(id,title,deadline)=>{
-	const form = new FormData();
-	form.append("id",id);
-	form.append("title",title);
-    form.append("deadline",deadline);
-	await fetch("http://localhost/YouCode/TaskBoard/tasks/updateTask",{
-		method: "POST",
-		body: form,
-	});
-}
+// const updateTask = async(id,title,deadline)=>{
+// 	const form = new FormData();
+// 	form.append("id",id);
+// 	form.append("title",title);
+//     form.append("deadline",deadline);
+// 	await fetch("http://localhost/YouCode/TaskBoard/tasks/updateTask",{
+// 		method: "POST",
+// 		body: form,
+// 	});
+// }
 
 
 
