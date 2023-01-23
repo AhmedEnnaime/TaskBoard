@@ -22,7 +22,7 @@ $current_date = date("Y-m-d");
         </div>
     </div>
 
-    <div class="flex flex-col gap-y-4 items-center rounded-lg bg-red-400 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-96 h-96 h-fit hidden drop-shadow-lg modal">
+    <div class="flex flex-col gap-y-4 items-center rounded-lg bg-gray-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-96 h-96 h-fit hidden drop-shadow-lg modal">
 
         <h3 class="pt-8 text-2xl">Add Task</h3>
 
@@ -44,7 +44,7 @@ $current_date = date("Y-m-d");
 
             </div>
 
-            <button class="p-4 mt-4 border-2 border-solid bg-blue-600" type="submit">Add</button>
+            <button class="p-4 mt-4 border-2 border-solid bg-blue-600 border-none text-white rounded-lg" type="submit">Add</button>
         </form>
     </div>
 

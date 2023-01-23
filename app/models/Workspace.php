@@ -69,26 +69,28 @@ class Workspace extends Model
         }
     }
 
-    public function updateWorkspace($data)
+    public function updateWorkspace($id, $title, $img)
     {
 
         try {
-            if (!empty($data["img"])) {
+            if (empty($data["img"])) {
+                //die("image");
                 $query = "UPDATE " . $this->table . " SET title=:title,img=:img WHERE id = :id";
                 $this->db->query($query);
-                $this->db->bind(":title", $data["title"]);
-                $this->db->bind(":img", $data["img"]);
-                $this->db->bind(":id", $data["id"]);
+                $this->db->bind(":title", $title);
+                $this->db->bind(":img", $img);
+                $this->db->bind(":id", $id);
                 if ($this->db->execute()) {
                     return true;
                 } else {
                     return false;
                 }
             } else {
+                //die("no image");
                 $query = "UPDATE " . $this->table . " SET title=:title WHERE id = :id";
                 $this->db->query($query);
-                $this->db->bind(":title", $data["title"]);
-                $this->db->bind(":id", $data["id"]);
+                $this->db->bind(":title", $title);
+                $this->db->bind(":id", $id);
                 if ($this->db->execute()) {
                     return true;
                 } else {
