@@ -22,14 +22,11 @@ $current_date = date("Y-m-d");
         </div>
     </div>
 
-    <div class="flex flex-col gap-y-4 items-center rounded-lg bg-gray-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-96 h-96 h-fit hidden drop-shadow-lg modal">
+    <div class="flex flex-col gap-y-4 justify-center bg-zinc-800/75 items-center absolute top-0 left-0 h-screen w-screen hidden drop-shadow-lg modal">
 
-        <h3 class="pt-8 text-2xl">Add Task</h3>
-
-
-        <i class="fa-solid fa-xmark right-2 absolute cursor-pointer fixed pt-2 pl-2"></i>
-
-        <form action="<?php echo URLROOT; ?>/tasks/add/<?php echo $data["workspace"]->id; ?>" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4">
+        <form action="<?php echo URLROOT; ?>/tasks/add/<?php echo $data["workspace"]->id; ?>" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4 py-3 px-10 rounded-lg absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-gray-100">
+            <h3 class="pt-8 text-2xl text-center">Add Task</h3>
+            <i class="fa-solid fa-xmark right-2 absolute cursor-pointer fixed pt-2 pl-2"></i>
 
             <label for="title">Title</label>
             <input name="title" class="rounded-lg h-8 p-4" type="text" placeholder="Enter title">

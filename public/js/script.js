@@ -50,10 +50,11 @@ update_close?.addEventListener("click",()=>{
 })
 
 for(let update of updates){
-    const id_input = update_modal?.childNodes[5].childNodes[1];
+   
+    const id_input = update_modal?.childNodes[1].childNodes[5];
     let id = update.parentElement.parentElement.childNodes[1].childNodes[1].value;
     let title = update.parentElement.childNodes[1].textContent;
-    let title_input = update_modal?.childNodes[5].childNodes[5];
+    let title_input = update_modal?.childNodes[1].childNodes[9];
     update.addEventListener("click",()=>{
         update_modal.classList.remove("hidden");
         title_input.value = title;

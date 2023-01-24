@@ -6,9 +6,9 @@
 
     <div class="flex flex-col p-16 w-full pt-16">
         <form action="<?php echo URLROOT; ?>/users/profile/<?php echo $data["user"]->id; ?>" method="POST" enctype="multipart/form-data">
-            <div class="flex flex-row items-center gap-x-48">
-                <div class="w-fit h-fit border-2 rounded-lg border-black border-dashed">
-                    <img class="w-64 h-64 rounded-lg" src="<?php echo URLROOT; ?>/img/uploads/users/<?php echo $data["user"]->img; ?>" alt="">
+            <div class="flex flex-col md:flex-row gap-y-8 items-center gap-x-48">
+                <div class="w-full md:w-fit h-fit border-2 rounded-lg border-black border-dashed">
+                    <img class="w-full h-64 rounded-lg" src="<?php echo URLROOT; ?>/img/uploads/users/<?php echo $data["user"]->img; ?>" alt="">
                 </div>
                 <div class="flex">
                     <label class="w-36 h-12 pt-2 text-center bg-blue rounded-lg cursor-pointer bg-blue-400" for="file-input">

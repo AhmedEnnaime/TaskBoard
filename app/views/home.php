@@ -22,14 +22,11 @@
 
         </div>
 
-        <div class="flex flex-col gap-y-4 items-center rounded-lg bg-gray-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-96 h-96 h-fit hidden drop-shadow-lg modal">
+        <div class="flex flex-col gap-y-4 justify-center bg-zinc-800/75 items-center absolute top-0 left-0 h-screen w-screen hidden drop-shadow-lg modal">
 
-            <h3 class="pt-8 text-2xl">Add workspace</h3>
-
-
-            <i class="fa-solid fa-xmark right-2 absolute cursor-pointer fixed pt-2 pl-2"></i>
-
-            <form action="<?php echo URLROOT; ?>/workspaces/add" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4">
+            <form action="<?php echo URLROOT; ?>/workspaces/add" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4 py-3 px-5 rounded-lg absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-gray-100">
+                <h3 class="pt-8 text-2xl text-center">Add workspace</h3>
+                <i class="fa-solid fa-xmark right-2 cursor-pointer fixed pt-2 pl-2"></i>
 
                 <label for="title">Title</label>
                 <input name="title" class="rounded-lg h-8 p-4 <?php echo (!empty($data['title_err'])) ? 'border-red-400' : 'border-black'; ?>" type="text" placeholder="Enter title" required>
@@ -69,13 +66,11 @@
                 <?php endforeach; ?>
 
             </div>
-            <div class="flex flex-col gap-y-4 items-center rounded-lg bg-gray-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-96 h-96 h-fit hidden drop-shadow-lg update_modal">
+            <div class="flex flex-col gap-y-4 justify-center bg-zinc-800/75 items-center absolute top-0 left-0 h-screen w-screen hidden drop-shadow-lg update_modal">
 
-                <h3 class="pt-8 text-2xl">Update workspace</h3>
-
-                <i class="fa-solid fa-xmark right-2 absolute cursor-pointer fixed pt-2 pl-2 update-close"></i>
-
-                <form action="<?php echo URLROOT; ?>/workspaces/update" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4">
+                <form action="<?php echo URLROOT; ?>/workspaces/update" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4 bg-gray-100 py-3 px-5 rounded-lg">
+                    <h3 class="pt-8 text-2xl text-center">Update workspace</h3>
+                    <i class="fa-solid fa-xmark right-2 cursor-pointer fixed pt-2 pl-2 update-close"></i>
                     <input type="hidden" name="id">
                     <label for="title">Title</label>
                     <input name="title" class="rounded-lg h-8 p-4 <?php echo (!empty($data['title_err'])) ? 'border-red-400' : 'border-black'; ?>" type="text" placeholder="Enter title" required>
