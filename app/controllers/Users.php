@@ -39,7 +39,9 @@ class Users extends Controller
 
             // Validation Form
 
-            if (empty($data['email'])) {
+            if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $data['email_err'] = 'Please enter valid email';
+            } else if (empty($data['email'])) {
                 $data['email_err'] = 'Please enter email';
             } else {
                 if ($this->userModel->findUserByEmail($data['email'])) {
@@ -49,6 +51,8 @@ class Users extends Controller
 
             if (empty($data['name'])) {
                 $data['name_err'] = 'Please enter name';
+            } else if (!preg_match("/^[a-zA-Z0-9]*$/", $data['name'])) {
+                $data['name_err'] = 'Please enter a valid name';
             }
 
             if (empty($data['birthday'])) {
