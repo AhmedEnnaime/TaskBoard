@@ -68,7 +68,7 @@
             </div>
             <div class="flex flex-col gap-y-4 justify-center bg-zinc-800/75 items-center absolute top-0 left-0 h-screen w-screen hidden drop-shadow-lg update_modal">
 
-                <form action="<?php echo URLROOT; ?>/workspaces/update" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4 bg-gray-100 py-3 px-5 rounded-lg">
+                <form action="<?php echo URLROOT; ?>/workspaces/update" method="POST" enctype="multipart/form-data" class="flex flex-col gap-y-4 py-3 px-5 rounded-lg absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-gray-100">
                     <h3 class="pt-8 text-2xl text-center">Update workspace</h3>
                     <i class="fa-solid fa-xmark right-2 cursor-pointer fixed pt-2 pl-2 update-close"></i>
                     <input type="hidden" name="id">
@@ -77,17 +77,16 @@
                     <span class="text-red-400"><?php echo $data['title_err'];  ?></span>
 
                     <!-- <label for="description">Description</label>
-<textarea placeholder="Enter description" class="rounded-lg p-4 <?php echo (!empty($data['description_err'])) ? 'border-red-400' : 'border-black'; ?>" name="description" id="" cols="20" rows="5" required></textarea>
-<span class="text-red-400"><?php echo $data['description_err'];  ?></span> -->
+                    <textarea placeholder="Enter description" class="rounded-lg p-4 <?php echo (!empty($data['description_err'])) ? 'border-red-400' : 'border-black'; ?>" name="description" id="" cols="20" rows="5" required></textarea>
+                    <span class="text-red-400"><?php echo $data['description_err'];  ?></span> -->
 
                     <label for="name">Image</label>
                     <input class="<?php echo (!empty($data['img_err'])) ? 'border-red-400' : 'border-black'; ?>" name="img" type="file">
                     <span class="text-red-400"><?php echo $data['img_err'];  ?></span>
 
-                    <button class="p-4 mt-4 border-2 border-solid bg-blue-600 rounded-lg border-none text-white update-btn" type="submit">Update</button>
+                    <button class="p-4 mt-4 border-2 border-solid bg-blue-600 rounded-lg border-none text-white" type="submit">Update</button>
                 </form>
             </div>
-
         <?php
         } else { ?>
             <div class="flex items-center justify-center">
