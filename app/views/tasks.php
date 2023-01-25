@@ -32,7 +32,7 @@ $current_date = date("Y-m-d");
             <input name="title" class="rounded-lg h-8 p-4" type="text" placeholder="Enter title">
 
             <label for="deadline">Deadline</label>
-            <input type="date" name="deadline" class="rounded-lg h-8 p-4">
+            <input type="date" name="deadline" class="rounded-lg h-8 p-4 deadline_input">
 
             <label for="members_num">Numbers of members</label>
             <input type="number" name="members_num" placeholder="Enter members" class="rounded-lg h-8 p-4 members_num">

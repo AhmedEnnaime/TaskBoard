@@ -10,6 +10,10 @@ const workspaces = document.querySelectorAll(".workspaces");
 const update_btn = document.querySelector(".update-btn");
 const task_titles = document.querySelectorAll(".task_title");
 const deadlines = document.querySelectorAll(".deadline");
+const deadline_input = document.querySelector(".deadline_input");
+
+let today = new Date().toISOString().split('T')[0];
+deadline_input?.setAttribute("min",today);
 
 const updateTask = (e) => {
     let el = e.currentTarget;
