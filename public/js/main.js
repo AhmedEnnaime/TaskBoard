@@ -9,17 +9,10 @@ for (let item of list_items) {
 	
 	item.addEventListener('dragstart', function () {
 		draggedItem = item;
-		setTimeout(function () {
-			item.style.display = 'none';
-		}, 0)
 	});
 
 	item.addEventListener('dragend', function () {
 		section_target = item.parentElement.id;
-		setTimeout(function () {
-			draggedItem.style.display = 'block';
-			draggedItem = null;
-		}, 0);
 		changeSection(item_id,section_target);
 		location.reload();
 	})
