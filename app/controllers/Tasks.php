@@ -103,7 +103,7 @@ class Tasks extends Controller
             if (empty($data['title_err']) && empty($data['deadline_err']) && empty($data['members_num_err'])) {
 
                 if ($this->taskModel->add($data)) {
-                    redirect("tasks");
+                    redirect("pages");
                 } else {
                     die("Something went wrong");
                 }

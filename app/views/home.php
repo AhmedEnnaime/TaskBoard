@@ -75,11 +75,6 @@
                     <label for="title">Title</label>
                     <input name="title" class="rounded-lg h-8 p-4 <?php echo (!empty($data['title_err'])) ? 'border-red-400' : 'border-black'; ?>" type="text" placeholder="Enter title" required>
                     <span class="text-red-400"><?php echo $data['title_err'];  ?></span>
-
-                    <!-- <label for="description">Description</label>
-                    <textarea placeholder="Enter description" class="rounded-lg p-4 <?php echo (!empty($data['description_err'])) ? 'border-red-400' : 'border-black'; ?>" name="description" id="" cols="20" rows="5" required></textarea>
-                    <span class="text-red-400"><?php echo $data['description_err'];  ?></span> -->
-
                     <label for="name">Image</label>
                     <input class="<?php echo (!empty($data['img_err'])) ? 'border-red-400' : 'border-black'; ?>" name="img" type="file">
                     <span class="text-red-400"><?php echo $data['img_err'];  ?></span>
